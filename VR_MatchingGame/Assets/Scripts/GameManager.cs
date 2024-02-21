@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public PedestalCollision[] pedestals;   
     public static GameManager instance;
 
+    public AudioClip WinnerAudio;
     private void Awake()
     {
         instance = this;
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("You win");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        AudioSource ac = GetComponent<AudioSource>();
+        ac.PlayOneShot(WinnerAudio);
     }
 }
